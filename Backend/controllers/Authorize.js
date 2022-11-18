@@ -9,7 +9,7 @@ const register = async(req,res)=>{
           return responses.badRequestResponse(res, {}, "Please provide the necessary details to register!");
         }
         const salt = await bcrypt.genSalt(10);
-        const hash_password = await bcrypt.hash(req.body.password, salt);
+        const hash_password = await bcrypt.hash(req.body.password.toString(), salt);
         req.body.password = hash_password;
     
         let new_user = await user.create(req.body);
@@ -19,7 +19,7 @@ const register = async(req,res)=>{
         return responses.successfullyCreatedResponse(res, new_user);
       } catch (error) {
         console.log(error);
-        return responses.serverErrorResponse(res,error);
+        return responses.serverErrorResponse(res,"Email already exists");
       }
 }
 
@@ -30,10 +30,10 @@ const login = async(req,res)=>{
         }
         const { email, password } = req.body;
         const User = await user.findOne({ email: email });
-        if (!user) {
-          return responses.unauthorizedResponse(res, {}, "User not found");
+        if (!User) {
+          return responses.unauthorizedResponse(res,"Email is not registered!");
         }
-    
+        // console.log(User);
         const dbPassword = User.password;
         bcrypt.compare(password, dbPassword).then((match) => {
           if (!match) {
@@ -48,11 +48,12 @@ const login = async(req,res)=>{
               httpOnly: true,
             });
             const userid = User._id;
-            return responses.successfullyCreatedResponse(res,userid,"Successfully logged in.");
+            
+            return responses.successfullyCreatedResponse(res,User,accessToken);
           }
         });
       } catch (err) {
-        // console.log(error);
+        console.log(err);
         return responses.serverErrorResponse(res);
       }
 }

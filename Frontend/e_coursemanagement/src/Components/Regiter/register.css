@@ -11,6 +11,12 @@
     left: 80%;
 
 }
+.errormsg{
+    color: red;
+    text-align: center;
+    font-weight: 600;
+
+}
 .register-right
 {
     /* position: absolute; */
@@ -107,3 +113,48 @@ font: 2.5em sans-serif;
     width: 45%;
     margin: 2%;
 }
+
+.btn2{
+    background-color: #6b84c4; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  max-width: 30%;   
+  max-height: 15%;
+  margin-top: 2%;
+  /* cursor: pointer; */
+}
+.spin::before {
+    animation: 1.5s linear infinite spinner;
+    animation-play-state: inherit;
+    border: solid 2px #cfd0d1;
+    border-bottom-color: #1c87c9;
+    border-radius: 50%;
+    content: "";
+    height: 15px;
+    position: absolute;
+    top: 87.5%;
+    left: 30%;
+    transform: translate3d(-50%, -50%, 0);
+    width: 15px;
+    will-change: transform;
+  }
+  @keyframes spinner {
+    0% {
+      transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    }
+    100% {
+      transform: translate3d(-50%, -50%, 0) rotate(360deg);
+    }
+  }
+
+  .success{
+    color: green;
+    font-weight: 800;
+    font-size: larger;
+  }

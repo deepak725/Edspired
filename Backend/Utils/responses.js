@@ -8,7 +8,7 @@ const successResponse = (res, data, msg = "Success response") => {
   const successfullyCreatedResponse = (
     res,
     data,
-    msg = "Record created successfully."
+    msg,
   ) => {
     res.status(201).json({
       data: data,

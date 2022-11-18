@@ -8,9 +8,9 @@ const Port = process.env.PORT || 3001;
 const userRoute = require('./routes/userRoute')
 
 var corsOptions = {
-    origin: "http://localhost:3001",
-    credentials: true,
-    optionSuccessStatus: 200,
+    origin:'*', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200,
   };
 //enable cors
 app.use(cors(corsOptions));
