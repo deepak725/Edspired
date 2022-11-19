@@ -1,0 +1,22 @@
+const mongoose = require('mongoose')
+const user = require('../user_model')
+const responses = require('../../Utils/responses')
+
+const createUser = async(req,res)=>{
+    let new_user = await user.create(req.body);
+        if (!new_user) {
+          return responses.serverErrorResponse(res, "Error while creating user.");
+        }
+        return responses.successfullyCreatedResponse(res, new_user);
+}
+
+const emailExist = async(req,res) =>{
+    const email = req.body.email;
+     const User = await user.findOne({ email: email });
+     if(User)
+        return true;
+    
+    return false;
+}
+
+module.exports = {createUser ,emailExist};

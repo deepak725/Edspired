@@ -5,6 +5,8 @@ import de from "../../Images/4.gif";
 import logo from "../../Images/Demo.png";
 import logo2 from "../../Images/logo3.png";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +15,8 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSucess] = useState(false);
   const [combi,setCombi] = useState(false);
+
+  let navigate  = useNavigate();
   async function submithandler(e)
   {
     e.preventDefault();
@@ -31,27 +35,29 @@ const Login = () => {
     const data = await response.json();
     console.log(data);
     console.log(response.status);
-    console.log(data.message);
+    console.log(data.msg);
 
     if(response.status === 401)
     {
       setEmailerr(true);
       setLoading(false);
+
     }
 
-    if(response.status === 201)
+    if(response.status === 200)
     {
-        alert("login successfull!");
         setEmailerr(false);
         setSucess(true);
         setCombi(false);
-        localStorage.setItem('token',data.message);
+        localStorage.setItem('token',data.data);
+        navigate("/dashboard");
 
     }
     if(response.status === 400)
     {
       setCombi(true);
       setLoading(false);
+      setEmailerr(false);
 
     }
   }

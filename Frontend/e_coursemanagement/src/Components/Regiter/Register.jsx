@@ -14,8 +14,9 @@ const Register = () => {
   const [password2, setPassword2] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [servererr, setServererr] = useState(false);
+  // const [servererr, setServererr] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [emailerr,setEmailerr] = useState(false);
 
   // const [errormsg,seterrormsg] = useState("normal");
   async function submithandler(event) {
@@ -39,13 +40,22 @@ const Register = () => {
       console.log(data);
 
       if (response.status === 500) {
-        setServererr(true);
+        // setServererr(true);
         setLoading(false);
+        alert('Server error! please try again later!')
       }
-      if (response.status === 201) {
+      else if(response.status === 401)
+      {
+          setEmailerr(true);
+          setLoading(true);
+      }
+      else if (response.status === 201) {
         setSuccess(true);
-        setServererr(false);
+        // setServererr(false);
         // localStorage.setItem('token', response.message)
+      }else{
+        setLoading(false);
+        alert('Server error! please try again later!') 
       }
       
     } else {
@@ -93,7 +103,7 @@ const Register = () => {
                 }}
                 required
               />
-              {servererr ? (
+              {emailerr ? (
                 <span className="errormsg">Email already exists!</span>
               ) : (
                 <></>

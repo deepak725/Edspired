@@ -2,6 +2,7 @@ const responses = require("../Utils/responses");
 const bcrypt = require("bcrypt");
 const user = require("../DAO/user_model")
 const {createTokens} = require("../Utils/JWT");
+const {createUser,emailExist} = require("../DAO/Access/User");
 const register = async(req,res)=>{
     try {
         //    const {username,password} = req.body;
@@ -11,15 +12,16 @@ const register = async(req,res)=>{
         const salt = await bcrypt.genSalt(10);
         const hash_password = await bcrypt.hash(req.body.password.toString(), salt);
         req.body.password = hash_password;
-    
-        let new_user = await user.create(req.body);
-        if (!new_user) {
-          return responses.serverErrorResponse(res, "Error while creating user.");
+       
+        if (await emailExist(req,res)) {
+          console.log('reached-here');
+          return responses.unauthorizedResponse(res,"Email Already exists!");
         }
-        return responses.successfullyCreatedResponse(res, new_user);
+       
+        await createUser(req,res);
       } catch (error) {
         console.log(error);
-        return responses.serverErrorResponse(res,"Email already exists");
+        return responses.serverErrorResponse(res,"Server Error");
       }
 }
 
@@ -49,7 +51,7 @@ const login = async(req,res)=>{
             });
             const userid = User._id;
             
-            return responses.successfullyCreatedResponse(res,User,accessToken);
+            return responses.successResponse(res,accessToken,"Logged in");
           }
         });
       } catch (err) {
