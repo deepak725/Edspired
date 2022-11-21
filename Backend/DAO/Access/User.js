@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const user = require('../user_model')
+const user = require('../Models/user_model')
 const responses = require('../../Utils/responses')
 
 const createUser = async(req,res)=>{
@@ -19,4 +19,11 @@ const emailExist = async(req,res) =>{
     return false;
 }
 
-module.exports = {createUser ,emailExist};
+const loginhelp = async(req,res)=>{
+     const { email } = req.body;
+        const User = await user.findOne({ email: email });
+       
+       return User; 
+}
+
+module.exports = {createUser ,emailExist , loginhelp};

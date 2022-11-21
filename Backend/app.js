@@ -6,7 +6,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const Port = process.env.PORT || 3001;
 const userRoute = require('./routes/userRoute')
-
+const courseRoute = require('./routes/courseRoute')
 var corsOptions = {
     origin:'*', 
     credentials:true,            //access-control-allow-credentials:true
@@ -18,7 +18,9 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
+
 app.use('/user',userRoute);
+app.use('/course',courseRoute);
 
 app.get("/",(req,res)=>{
     res.send("Welcome to Edspired Backend!");

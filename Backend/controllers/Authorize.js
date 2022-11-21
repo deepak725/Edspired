@@ -1,8 +1,9 @@
 const responses = require("../Utils/responses");
 const bcrypt = require("bcrypt");
-const user = require("../DAO/user_model")
+// const user = require("../DAO/user_model")
 const {createTokens} = require("../Utils/JWT");
-const {createUser,emailExist} = require("../DAO/Access/User");
+const {createUser,emailExist,loginhelp} = require("../DAO/Access/User");
+
 const register = async(req,res)=>{
     try {
         //    const {username,password} = req.body;
@@ -30,12 +31,16 @@ const login = async(req,res)=>{
         if (!req.body.password || !req.body.email) {
           return responses.badRequestResponse(res, {}, "Invalid credentials");
         }
-        const { email, password } = req.body;
-        const User = await user.findOne({ email: email });
+        const { password } = req.body;
+        // const User = await user.findOne({ email: email });
+        // if (!User) {
+        //   return responses.unauthorizedResponse(res,"Email is not registered!");
+        // }
+        // console.log(User);
+        const User = await loginhelp(req,res);
         if (!User) {
           return responses.unauthorizedResponse(res,"Email is not registered!");
         }
-        // console.log(User);
         const dbPassword = User.password;
         bcrypt.compare(password, dbPassword).then((match) => {
           if (!match) {
@@ -49,7 +54,7 @@ const login = async(req,res)=>{
               maxAge: 60 * 60 * 24 * 30 * 1000,
               httpOnly: true,
             });
-            const userid = User._id;
+            // const userid = User._id;
             
             return responses.successResponse(res,accessToken,"Logged in");
           }
@@ -58,6 +63,10 @@ const login = async(req,res)=>{
         console.log(err);
         return responses.serverErrorResponse(res);
       }
+}
+
+const profile = async(req,res)=>{
+  
 }
 
 module.exports = {register,login};

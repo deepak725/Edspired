@@ -4,7 +4,7 @@ import Register from './Components/Regiter/Register';
 import Home from './Components/Home/home';
 import { Routes, Route } from "react-router-dom";
 import Dashboard from './Components/Dashboard/Dashboard';
-import {useState,useEffect } from 'react';
+import React,{useState,useEffect } from 'react';
 import jwt_decode from "jwt-decode";
 function App() {
   
@@ -36,12 +36,19 @@ function App() {
     <div className="App">
     <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+           
         {passuser?
+        <React.Fragment>
                   <Route path='/dashboard' element={<Dashboard />} />
-                :
+                  <Route path="/login" element={<Dashboard />} />
+                  <Route path="/register" element={<Dashboard />} />  
+                  </React.Fragment>
+                  :
+                <React.Fragment>
                   <Route path='/dashboard' element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />      
+                  </React.Fragment>
                   }          
     </Routes>
     </div>

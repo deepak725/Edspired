@@ -1,5 +1,5 @@
 const { sign, verify } = require("jsonwebtoken");
-
+var mongoose = require('mongoose');
 const createTokens = (user) => {
   const accessToken = sign(
     { username: user.username, id: user.id },
@@ -9,8 +9,9 @@ const createTokens = (user) => {
   return accessToken;
 };
 
+
 const validateToken = (req, res, next) => {
-  const accessToken = req.cookies["access-token"];
+  const accessToken = req.body["token"];
 
   if (!accessToken)
     return res.status(400).json({ error: "User not Authenticated!" });
@@ -21,9 +22,54 @@ const validateToken = (req, res, next) => {
       req.authenticated = true;
       return next();
     }
+
   } catch (err) {
     return res.status(400).json({ error: err });
   }
 };
 
-module.exports = { createTokens, validateToken };
+
+const CoursevalidateToken = (req, res, next) => {
+  const accessToken = req.body["token"];
+
+  if (!accessToken)
+    return res.status(400).json({ error: "User not Authenticated!" });
+
+  try {
+    const validToken = verify(accessToken, process.env.SECRETMSG);
+    if (validToken) {
+      console.log(validToken.id);
+      
+      req.body.instructor_id = mongoose.Types.ObjectId(validToken.id);
+      req.authenticated = true;
+      return next();
+    }
+
+  } catch (err) {
+    return res.status(400).json({ error: err });
+  }
+};
+
+
+const CourseJoinvalidateToken = (req, res, next) => {
+  const accessToken = req.body["token"];
+
+  if (!accessToken)
+    return res.status(400).json({ error: "User not Authenticated!" });
+
+  try {
+    const validToken = verify(accessToken, process.env.SECRETMSG);
+    if (validToken) {
+      console.log(validToken.id);
+      
+      req.body.student_id = mongoose.Types.ObjectId(validToken.id);
+      req.authenticated = true;
+      return next();
+    }
+
+  } catch (err) {
+    return res.status(400).json({ error: err });
+  }
+};
+
+module.exports = { createTokens, validateToken  , CoursevalidateToken , CourseJoinvalidateToken};

@@ -51,6 +51,8 @@ const Login = () => {
         setCombi(false);
         localStorage.setItem('token',data.data);
         navigate("/dashboard");
+        window.location.reload();
+       
 
     }
     if(response.status === 400)
