@@ -72,4 +72,25 @@ const CourseJoinvalidateToken = (req, res, next) => {
   }
 };
 
-module.exports = { createTokens, validateToken  , CoursevalidateToken , CourseJoinvalidateToken};
+const ProfileValidateToken = (req, res, next) => {
+  const accessToken = req.body["token"];
+
+  if (!accessToken)
+    return res.status(400).json({ error: "User not Authenticated!" });
+
+  try {
+    const validToken = verify(accessToken, process.env.SECRETMSG);
+    if (validToken) {
+      // console.log(validToken.id);
+      
+      req.body.user_id = mongoose.Types.ObjectId(validToken.id);
+      req.authenticated = true;
+      return next();
+    }
+
+  } catch (err) {
+    return res.status(400).json({ error: err });
+  }
+};
+
+module.exports = { createTokens, validateToken  , CoursevalidateToken , CourseJoinvalidateToken,ProfileValidateToken};
