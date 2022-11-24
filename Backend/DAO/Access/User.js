@@ -19,6 +19,14 @@ const emailExist = async(req,res) =>{
     return false;
 }
 
+const idExist = async(req,id) =>{
+    
+    const User = await user.findById(id)
+    if(User)
+        return User;
+    return false;
+}
+
 const loginhelp = async(req,res)=>{
      const { email } = req.body;
         const User = await user.findOne({ email: email });
@@ -26,4 +34,4 @@ const loginhelp = async(req,res)=>{
        return User; 
 }
 
-module.exports = {createUser ,emailExist , loginhelp};
+module.exports = {createUser ,emailExist , loginhelp , idExist};

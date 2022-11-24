@@ -1,9 +1,11 @@
 const responses = require("../Utils/responses");
 const course = require("../DAO/Models/course_model");
 const course_register = require("../DAO/Models/course_register");
-const users = require("../DAO/Models/user_model");
+// const users = require("../DAO/Models/user_model");
 const mongoose = require('mongoose');
-const { response } = require("express");
+const {idExist} = require('../DAO/Access/User')
+const {course_create} = require('../DAO/Access/Course_crud')
+// const { response } = require("express");
 
 const createCourse = async (req, res) => {
   try {
@@ -24,35 +26,23 @@ const createCourse = async (req, res) => {
 
     }
 
-    const instructor = await users.findById(req.body.instructor_id);
+    //Database code
+
+    const instructor = await idExist(req,req.body.instructor_id);
+    
 
     if(!instructor)
         return responses.badRequestResponse(res,{},"Your user id not found in system!");
      
     if(!instructor.verified)    
         return responses.badRequestResponse(res,{},"Your email is not verified in system. please verify it in profile section!");
+    
+        //db code
 
-    const newCourse = new course({
-      course_code: code,
-      courseName: req.body.courseName,
-      instructor_id: req.body.instructor_id,
-    });
-
-    newCourse
-      .save()
-      .then((obj) => {
-        return responses.successfullyCreatedResponse(
-          res,
-          obj,
-          "Course created successully"
-        );
-      })
-      .catch((err) => {
-        return responses.badRequestResponse(res, err, "course not created");
-      });
+    course_create(req,res,code);
 
   } catch (err) {
-    return responses.notFoundResponse(res, err);
+    return responses.badRequestResponse(res, err,"Internal error");
   }
 };
 
@@ -64,6 +54,7 @@ const joinCourse = async(req,res) => {
             return responses.badRequestResponse(res,{},"Course code not provided");
         }
 
+        //db One
         const course_find = await course.findOne({ course_code: req.body.courseCode});
         if(!course_find)
             return responses.badRequestResponse(res,{},"Course not found! please check the course code.");
@@ -73,6 +64,7 @@ const joinCourse = async(req,res) => {
         let inst_id = course_find.instructor_id;
 
         // console.log(course_find);
+        //db code
         var stu = await course_register.findOne({course_id:course_id })
         var ids = req.body.student_id;
         
