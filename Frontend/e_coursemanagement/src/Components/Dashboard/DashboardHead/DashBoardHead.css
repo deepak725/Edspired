@@ -1,0 +1,59 @@
+.DashBoardHead{
+        max-width: 100%;
+        max-height: 12%;
+        background: rgba(54, 93, 192, 1);
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        top: 0;
+        overflow: hidden;
+  }
+
+.DashBoardLogo{
+    max-width: 20%;
+    max-height: 90%;
+    cursor: pointer;
+    margin-bottom: 70%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /* border: 2px solid; */
+    /* padding-bottom: 10%; */
+}
+
+.DashBoardHeadItems{
+    display: flex;
+    align-items: center;        
+    justify-content: flex-end;
+    margin-left:auto;
+
+}
+.subclass{
+    max-width: 12%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* border: 2px solid; */
+    margin: 2%;
+   
+}
+
+.subclass-logo{
+    /* position: absolute; */
+width: 30%;
+height: 40%;
+}
+.subclass-Text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Inria Serif';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 38px;
+    max-height: 20%;
+    
+}

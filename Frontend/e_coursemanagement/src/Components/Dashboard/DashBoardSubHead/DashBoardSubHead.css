@@ -1,0 +1,68 @@
+.DashBoardSubHeadMain{
+    max-width: 100%;
+    max-height: 12%;
+    background: rgba(54, 93, 192, 1);
+    position:fixed;
+    /* margin-top: 1px solid;
+     */
+    border-top: 1px solid #000;
+     left:0px;
+  top:-80px;
+  transition:top 2s;
+  -webkit-transition:top 1s;
+  display: flex;
+    /* top: 0; */
+
+}
+.DashBoardSubHeadMain2
+{ max-width: 100%;
+    max-height: 12%;
+    background: rgba(54, 93, 192, 1);
+    position:fixed;
+    /* margin-top: 1px solid;
+     */
+    border-top: 1px solid #000;
+     left:0px;
+  top:-80px;
+  transition:top 2s;
+  -webkit-transition:top 1s;
+  top:70px;  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subMenu{
+    /* border: 2px solid; */
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid; */
+    max-width: 40%;
+    /* cursor: pointer; */
+    max-width:18%;
+
+}
+.subMenuIcon{
+    width: 10%;
+    height: 30%;
+    /* border: 2px solid black; */
+    cursor: pointer;
+}
+
+.subMenuText{
+    font-family: Inria Serif;
+font-size: 24px;
+font-weight: 400;
+line-height: 29px;
+letter-spacing: 0em;
+text-align: left;
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+/* border: 1px solid; */
+max-width: fit-content;
+cursor: pointer;
+}

@@ -4,7 +4,7 @@ const course_register = new mongoose.Schema({
     course_id:{
         type:mongoose.Schema.Types.ObjectId,
         required:true,
-        ref:'users'
+        ref:'course'
     },
     student_id:[{
         type: mongoose.Schema.Types.ObjectId,

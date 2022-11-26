@@ -4,7 +4,8 @@ const course_register = require("../DAO/Models/course_register");
 // const users = require("../DAO/Models/user_model");
 const mongoose = require('mongoose');
 const {idExist} = require('../DAO/Access/User')
-const {course_create} = require('../DAO/Access/Course_crud')
+const {course_create} = require('../DAO/Access/Course_crud');
+// const { response } = require("express");
 // const { response } = require("express");
 
 const createCourse = async (req, res) => {
@@ -129,6 +130,56 @@ const joinCourse = async(req,res) => {
 
 }
 
+const getStudentCourse = async(req,res) =>{
 
+    try{
+        if(!req.params.userid)
+          return responses.notFoundResponse(res,"Please provide userID");
+        
+         const course_find= await course_register.find({student_id:req.params.userid}).populate("course_id");
+        //  console.log(course_find);
 
-module.exports = {createCourse,joinCourse};
+        var coursedata = [];
+        if(course_find)
+        {
+            course_find.map((obj)=>{
+              coursedata.push(obj)
+            })   
+           }
+            
+         return responses.successfullyCreatedResponse(res,coursedata,"Enrolled course Received");
+       
+
+    }catch(err)
+    {
+      console.log(err);
+      return responses.badRequestResponse(res,err,"Internal error");
+    }
+
+}
+
+const getInstructorCourse = async(req,res)=>{
+  try{
+    if(!req.params.userid)
+      return responses.notFoundResponse(res,"Please provide userID");
+    
+    const insdata = await course.find({instructor_id:req.params.userid})
+    
+    var coursedata = []
+    if(insdata)
+  {
+      insdata.map((obj)=>{
+        coursedata.push(obj)
+      })
+  }
+     return responses.successfullyCreatedResponse(res,insdata,"Created course Received");
+   
+
+}catch(err)
+{
+  console.log(err);
+  return responses.badRequestResponse(res,err,"Internal error");
+}
+}
+
+module.exports = {createCourse,joinCourse,getStudentCourse,getInstructorCourse};

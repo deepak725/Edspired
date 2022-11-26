@@ -39,7 +39,7 @@ function App() {
            
         {passuser?
         <React.Fragment>
-                  <Route path='/dashboard' element={<Dashboard />} />
+                  <Route path='/dashboard' element={<Dashboard  />} />
                   <Route path="/login" element={<Dashboard />} />
                   <Route path="/register" element={<Dashboard />} />  
                   </React.Fragment>
