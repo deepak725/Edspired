@@ -4,7 +4,7 @@
     max-width: 100%;
     display: flex ;
     justify-content: space-between;
-    /* position: fixed,absolute; */
+    position: relative;
     overflow: hidden;
     /* flex-basis: 1; */
     /* border: 2px solid white; */

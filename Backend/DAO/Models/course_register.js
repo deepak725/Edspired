@@ -10,7 +10,6 @@ const course_register = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref:'users',
-        unique:true
     }]
 
 },{

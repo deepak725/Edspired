@@ -63,18 +63,19 @@ const joinCourse = async(req,res) => {
 
         let course_id = course_find._id;    
         let inst_id = course_find.instructor_id;
-
+        console.log(course_id);
         // console.log(course_find);
         //db code
         var stu = await course_register.findOne({course_id:course_id })
         var ids = req.body.student_id;
-        
+        console.log(stu)
         if(inst_id.toString() === ids.toString())
         {
-            return responses.badRequestResponse(res,{},"Instructor can't its own class!");
+            return responses.badRequestResponse(res,{},"Instructor can't Join its own class!");
         }
         if(stu)
         {
+          console.log("inside if")
             var ids2 = stu.student_id;
             var error =  ids2.every(ele => {
                if(ele.toString() === ids.toString())
@@ -86,7 +87,7 @@ const joinCourse = async(req,res) => {
         
           console.log("ended")
             if(error){
-                return responses.badRequestResponse(res,{},"Duplicate values!");
+                return responses.badRequestResponse(res,{},"You might have joined already");
             }
             ids2.push(ids);
             console.log(ids2);
@@ -99,13 +100,15 @@ const joinCourse = async(req,res) => {
                 );
               })
               .catch((err) => {
-                return responses.badRequestResponse(res, err, "Student not enrolled");
+                return responses.badRequestResponse(res, err, "Enrolled failed ! please try again later.");
               });
         }else{
             
+          var stu_ids = []
+          stu_ids.push(ids);
             const register = new course_register({
                 course_id: course_id,
-                student_id:ids
+                student_id:stu_ids
              })
 
             register
@@ -119,7 +122,7 @@ const joinCourse = async(req,res) => {
             })
             .catch((err) => {
                 console.log(err);
-            return responses.badRequestResponse(res);
+            return responses.badRequestResponse(res, err, "Enrolled failed ! please try again later.");
             });
             }   
     }
