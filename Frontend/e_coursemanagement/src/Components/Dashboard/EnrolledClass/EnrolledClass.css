@@ -1,0 +1,41 @@
+.ClassTitle
+{
+    position: absolute;
+    max-width: 15%;
+    height: 8%;
+    left: 44%;
+    top: 8%;
+    background: #FF7F50;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Inria Serif;
+    font-size: 20px;
+    font-weight: 400;
+    color:white;
+    
+
+}
+
+.Back-Button{
+    max-width: 5%;
+    max-height: 4%;
+    /* border: 2px solid; */
+    margin-left: 4%;
+    margin-top: 1%;
+    border-radius: 24px;
+    background: #FF7F50;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ins_image{
+
+    max-width: 20%;
+    max-height: 50%;
+}

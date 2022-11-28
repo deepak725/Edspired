@@ -4,32 +4,33 @@ import Register from './Components/Regiter/Register';
 import Home from './Components/Home/home';
 import { Routes, Route } from "react-router-dom";
 import Dashboard from './Components/Dashboard/Dashboard';
-// import React,{useState,useEffect } from 'react';
-// import jwt_decode from "jwt-decode";
+import React,{useState,useEffect } from 'react';
+import jwt_decode from "jwt-decode";
+import EnrolledClass from './Components/Dashboard/EnrolledClass/EnrolledClass';
 function App() {
   
   
-  // const [passuser,setUser] = useState(false);
-  // useEffect(() => {
-  //   if(localStorage)
-  //   {
-  //     const token = localStorage.getItem('token')
-  //     // console.log(token);
-  //     if (token) {
-  //       const user = jwt_decode(token)
-  //       if (!user) {
+  const [passuser,setUser] = useState(false);
+  useEffect(() => {
+    if(localStorage)
+    {
+      const token = localStorage.getItem('token')
+      console.log(token);
+      if (token) {
+        const user = jwt_decode(token)
+        if (!user) {
 
-  //         localStorage.removeItem('token')
-  //         setUser(false);
-  //       } else {
-  //         // populateQuote()
-  //         setUser(true);
-  //         console.log(user);
-  //         console.log(passuser);
-  //       }
-  //     }
-  // }
-	// },[passuser])
+          localStorage.removeItem('token')
+          setUser(false);
+        } else {
+          // populateQuote()
+          setUser(true);
+          console.log(user);
+          console.log(passuser);
+        }
+      }
+  }
+	},[passuser])
   
   
  
@@ -39,11 +40,23 @@ function App() {
     <div className="App">
     <Routes>
             <Route path="/" element={<Home />} />
-          
+           
+        {passuser?
+        <React.Fragment>
                   <Route path='/dashboard' element={<Dashboard  />} />
+                  <Route path="/login" element={<Dashboard />} />
+                  <Route path="/register" element={<Dashboard />} />  
+                  
+                  <Route path='/Enrolledclass' element={<EnrolledClass />}  />
+                  </React.Fragment>
+                  :
+                <React.Fragment>
+                  <Route path='/dashboard' element={<Home />} />
                   <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />      
-                      
+                  <Route path="/register" element={<Register />} />    
+                  <Route path='/Enrolledclass' element={<Home />}  /> 
+                  </React.Fragment>
+                  }          
     </Routes>
     </div>
   );

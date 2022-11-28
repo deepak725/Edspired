@@ -56,7 +56,7 @@ const JoinClass = ({ setJoinShowModal }) => {
       <button onClick={() => setJoinShowModal(false)}>X</button>
       <div className='modal-child'>
               <form onSubmit={classJoin} >
-              <input type="text" className="form__input" id="name" onChange={(e)=>{setcourseCode(e.target.value)}} placeholder="Enter Class Code!" required="" />
+              <input type="text" className="form__input" id="name" onChange={(e)=>{setcourseCode(e.target.value)}} placeholder="Enter Class Code!" required/>
                <label htmlFor="name" className="form__label">Enter Class Code!</label>
                {loading ? <input type={"submit"} value={btnvalue} className={"submit-create-form2"} disabled />:
                <input type={"submit"} value={btnvalue} className={"submit-create-form"}  />

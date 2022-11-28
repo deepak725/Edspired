@@ -1,0 +1,36 @@
+.EnrolledClassHead{
+    background: #365DC0;
+    max-width: 100%;
+    max-height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.EnrolledClassHeadLogo{
+    max-width: fit-content;
+    max-height: fit-content;
+    cursor: pointer;
+    /* margin-bottom: 70%; */
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /* border: 2px solid; */
+    /* padding: 2%; */
+}
+
+
+.EnrolledClassHeadMenu{
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+    /* border: 2px solid; */
+}
+
+.EnrolledSubclass{
+    /* border: 2px solid; */
+    max-width: 4%;
+    max-height:60%;
+    margin-right: 4%;
+}

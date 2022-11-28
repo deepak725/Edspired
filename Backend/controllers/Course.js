@@ -7,6 +7,7 @@ const {idExist} = require('../DAO/Access/User')
 const {course_create} = require('../DAO/Access/Course_crud');
 // const { response } = require("express");
 // const { response } = require("express");
+// const mongoose = require('mongoose')
 
 const createCourse = async (req, res) => {
   try {
@@ -185,4 +186,30 @@ const getInstructorCourse = async(req,res)=>{
 }
 }
 
-module.exports = {createCourse,joinCourse,getStudentCourse,getInstructorCourse};
+const getSingleCourse = async(req,res)=>{
+
+    try{
+
+      if(!req.body.id)
+      {
+        return responses.notFoundResponse(res,"Course Id not found");
+      }
+      
+      let id = new mongoose.Types.ObjectId(req.body.id);
+      let course_data = await course.findOne({_id:req.body.id});
+      if(!course_data)
+        return responses.badRequestResponse(res,{},"Class Not found!");
+      
+      return responses.successResponse(res,course_data,"Course Details!")
+        
+        
+    }catch(err)
+    {
+      console.log(err)
+      return responses.badRequestResponse(res,err,"Internal error")
+    }
+
+}
+
+
+module.exports = {createCourse,joinCourse,getStudentCourse,getInstructorCourse ,getSingleCourse};

@@ -63,7 +63,7 @@ const DashBoardClasses = () => {
         
         enrolled()
     },[])
-
+   
     return (
     <div className='DashBoardClasses'>
 
@@ -85,17 +85,17 @@ const DashBoardClasses = () => {
                 
         </div>
        </div>
-        <div className='DashBoardAllClasses'>
+        <div className='DashBoardAllClasses' >
           
             {
              
              change ? EnrollData.length === 0 ?<> Classes Not found </>  :
-             EnrollData.map((obj)=>{
-                return <> <Course data={obj} /></>
+             EnrollData.map((obj,index)=>{
+                return <Course data={obj}  key={index} id={obj._id} />
               }) :
                classData.length === 0 ?<> Classes Not found </>  :
-               classData.map((obj)=>{
-                  return <> <CourseIns data={obj} /></>
+               classData.map((obj,index)=>{
+                  return <CourseIns data={obj}  key={index} id={obj._id} />
                 })
             }
        

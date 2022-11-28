@@ -57,7 +57,7 @@ const CreateClass = ({ setShowModal }) => {
         <button onClick={() => setShowModal(false)}>X</button>
         <div className='modal-child'>
                 <form onSubmit={classCreate} >
-                <input type="text" className="form__input" onChange={(e)=>{setValue(e.target.value)}} id="name" placeholder="Enter Class Name!" required="" />
+                <input type="text" className="form__input" onChange={(e)=>{setValue(e.target.value)}} id="name" placeholder="Enter Class Name!" required />
                  <label htmlFor="name" className="form__label">Enter Class Name!</label>
                  {loading ? <input type={"submit"} value={btnvalue} className={"submit-create-form2"} disabled />:
                  <input type={"submit"} value={btnvalue} className={"submit-create-form"}  />
