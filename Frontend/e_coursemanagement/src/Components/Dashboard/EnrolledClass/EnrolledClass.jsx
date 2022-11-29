@@ -8,13 +8,13 @@ import { useState } from 'react';
 import jwt_decode from "jwt-decode"
 import EnrolledClassBody from './EnrolledClassBody/EnrolledClassBody';
 import ins_logo from '../../../Images/instructor.png'
+import { InstructorContext } from '../../../Helper/Context';
 
 const EnrolledClass = () => {
     const [params] = useSearchParams();
-    // const [classData,setClassData] = useState({})
     const [isInstructor,setInstructor] = useState(false)
     const [className,setClassName] = useState("Class-name")
-
+    
     const navigate = useNavigate();
     let getClass = async()=>{
         let id = params.get("id");
@@ -56,11 +56,13 @@ const EnrolledClass = () => {
             alert(response.message)
     }
     useEffect(()=>{
-       
         getClass()
+        
+       // eslint-disable-next-line
     },[])
   return (
     <div className='EnrolledClass'>
+      <InstructorContext.Provider value={{isInstructor}}>
             <EnrolledClassHead isInstructor={isInstructor}/>
             <div className='ClassTitle'>
             {isInstructor ? <><input type={"image"} className={"ins_image"} src={ins_logo} alt={"ins"} />{className}</> : className }   
@@ -72,8 +74,8 @@ const EnrolledClass = () => {
                 {/* Back button */}
                 Back
             </div>
-            <EnrolledClassBody />
-
+            <EnrolledClassBody isInstructor={isInstructor} />
+            </InstructorContext.Provider>
     </div>
   )
 }

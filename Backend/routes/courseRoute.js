@@ -27,5 +27,7 @@ router.post("/getCourse",async(req,res)=>{
     getSingleCourse(req,res)
 })
 
+// router.post("")
+
 
 module.exports = router;

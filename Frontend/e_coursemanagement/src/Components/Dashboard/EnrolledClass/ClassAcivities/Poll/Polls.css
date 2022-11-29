@@ -1,0 +1,95 @@
+.PollContainer{
+    max-width: 90%;
+    max-height: 200%;
+    border: 2px solid ;
+    border-radius: 20px;
+    /* background: #FF7F50; */
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px;
+
+
+}
+
+.PollTitle{
+    font-family: Inria Serif;
+font-size: 25px;
+font-weight: 700;
+line-height: 48px;
+letter-spacing: 0em;
+text-align: center;
+
+}
+
+.PollContainer form{
+
+        max-width: 80%;
+        max-height: 30%;
+        /* border: 2px solid; */
+        display: flex;
+
+}
+
+.OptionValue{
+    font-family: Inria Serif;
+    font-size: 20px;
+    font-weight: 700;
+    /* line-height: 48px; */
+    letter-spacing: 0em;
+    /* text-align: center; */
+    /* border: 2px solid; */
+    /* max-width: fit-content; */
+    
+}
+
+.OptionDisplay
+{
+    /* border: 2px solid; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.submit-create-poll{
+
+    background-color: #365DC0; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /* font-size: 14px; */
+    border-radius: 5px;
+    max-width: 20%;
+    max-height: 100%;
+    cursor: pointer;
+}
+.PollTime{
+    /* border: 2px solid; */
+    margin-top: 5%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: small;
+}
+
+
+.submit-create-poll2{
+
+    background-color: #525756da; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /* font-size: 14px; */
+    border-radius: 5px;
+    max-width: 20%;
+    max-height: 100%;
+    cursor: pointer;
+    
+}

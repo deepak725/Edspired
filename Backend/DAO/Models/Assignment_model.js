@@ -31,6 +31,10 @@ const assignmentSchema = new mongoose.Schema({
             type:mongoose.Schema.Types.ObjectId,
             required:true,
             ref:'users'
+        },
+        points:{
+            type:Number,
+            required:true,
         }
 
 

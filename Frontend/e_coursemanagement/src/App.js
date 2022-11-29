@@ -39,13 +39,13 @@ function App() {
 
     <div className="App">
     <Routes>
-            <Route path="/" element={<Home />} />
            
         {passuser?
         <React.Fragment>
                   <Route path='/dashboard' element={<Dashboard  />} />
                   <Route path="/login" element={<Dashboard />} />
                   <Route path="/register" element={<Dashboard />} />  
+                  <Route path="/" element={<Dashboard />} />  
                   
                   <Route path='/Enrolledclass' element={<EnrolledClass />}  />
                   </React.Fragment>

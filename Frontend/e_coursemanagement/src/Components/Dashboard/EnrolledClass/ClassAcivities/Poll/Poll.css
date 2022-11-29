@@ -1,0 +1,208 @@
+.PollClass{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.CreatePoll{
+
+    max-width: 18%;
+    max-height: 8%;    
+    background:#FF7F50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Inria Serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: center;
+    border-radius: 50px;
+    margin: 2%;
+    cursor: pointer;
+}
+.AllPolls{
+    /* border: 2px solid; */
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    /* max-width: 60%; */
+    max-height: 80%;
+}
+
+
+
+.PollClass .container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* max-height: 100%; */
+    /* max-width: 80%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  .PollClass .container .modal {
+    z-index: 1;
+  max-width: 40%;
+    max-height: 60%;
+    top: 2%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    position: relative;
+    animation: animate 0.3s;
+  }
+  .PollClass .modal button {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    padding: 8px 11px;
+    background: rgba(54, 93, 192, 1);
+    max-width: 8%;
+    max-height: 8%;
+    color: white;
+    font-weight: bold;
+   
+    border-radius: 2px;
+    cursor: pointer;
+    border: 2px solid black;
+  }
+  
+  @keyframes animate {
+    from {
+      transform: scale(0.5);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  .PollClass .container .modal .modal-child{
+    /* border: 2px solid; */
+    max-width: 80%;
+    max-height: 70%;
+    align-items: center;
+    display: flex;
+    justify-content: center; 
+    flex-direction: column;
+  }
+
+  .PollClass .container .modal .modal-child form{
+    max-width: 80%;
+    max-height: 40%;
+    /* border: 2px solid; */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .formFields{
+    border: 2px solid red;
+    max-width: 20%;
+  }
+
+  .formButton{
+    border: 2px solid green;
+  }
+  .PollClass .container .modal .modal-child form .inputfield {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    /* font-size: 1.2rem; */
+      /* margin: 0 auto; */
+    padding: 1.5rem 2rem;
+
+    border-radius: 0.2rem;
+    border: 2px solid;
+    background-color: rgb(255, 255, 255);
+    /* border: none; */
+    max-width: 50%;
+    max-height: 10%;
+    display: block;
+    /* border-bottom: 0.3rem solid transparent; */
+    transition: all 0.3s;
+  }
+
+  .inputfield2{
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    /* font-size: 1.2rem; */
+      /* margin: 0 auto; */
+    padding: 1.5rem 2rem;
+
+    border-radius: 0.2rem;
+    border: 2px solid;
+    background-color: rgb(255, 255, 255);
+    /* border: none; */
+    max-width: 20%;
+    max-height: 4%;
+    display: block;
+    /* border-bottom: 0.3rem solid transparent; */
+    transition: all 0.3s;
+    margin: 2%;
+  }
+
+  .Labeloptions{
+    max-width: fit-content;
+    max-height: fit-content;
+    /* border: 2px solid red; */
+    margin: 2%;
+    font-family: Inria Serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-bottom: 0%;
+
+  }
+
+  .OptionFields{
+    /* border: 2px solid red; */
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .PollClass .container .modal .modal-child form .submit-create-form{
+    background-color: #FF7F50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    max-width: 100%;   
+    max-height: 30%;
+    margin-top: 10%;
+    cursor: pointer;
+  }
+
+  .submit-create-form3{
+    background-color: #365DC0; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    max-width: 60%;   
+    max-height: 30%;
+    margin-top: 10%;
+    cursor: pointer;
+  }
+
+  

@@ -58,9 +58,12 @@ color: white;
 .classBody{
     border: 5px solid #365DC0;
     margin-left: 5%;
-    max-width: 60%;
-    max-height: 90%;
+    max-width: 80%;
+    max-height: 95%;
     margin-top: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .first{
