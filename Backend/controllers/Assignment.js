@@ -33,7 +33,7 @@ const assignment_controller = async (req, res) => {
 
     const instructor = await user.findById(req.body.instructor_id);
     if (!instructor)
-      return responses.notFoundResponse(res, "Instructor is not registered!");
+      return responses.notFoundResponse(res, "User not found please log in again!");
 
     const course_ = course.findById(req.body.course_id);
 
@@ -78,7 +78,7 @@ const assignment_controller = async (req, res) => {
         return responses.badRequestResponse(
           res,
           err,
-          "Assignment not created!"
+          "For some reason assignment not created! please try after some time or look at the data correctly!"
         );
       });
   } catch (err) {

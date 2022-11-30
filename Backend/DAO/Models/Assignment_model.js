@@ -18,7 +18,7 @@ const assignmentSchema = new mongoose.Schema({
             type:String
         },
         assignment_dueDate:{
-            type:Date,
+            type:String,
             required:true
         },
         attachments:[{type: mongoose.SchemaTypes.Url}],

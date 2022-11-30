@@ -93,3 +93,38 @@ text-align: center;
     cursor: pointer;
     
 }
+
+.resShow{
+    max-width: 80%;
+    border: 2px solid #FF7F50;
+    max-height: 10%;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    
+}
+.resShow span{
+    /* border: 2px solid; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Inria Serif;
+font-size: 20px;
+font-weight: 700;
+text-align: center;
+max-width: fit-content;
+        margin: 2%;
+}
+
+
+.PollContainer .modal-child
+{
+    overflow-y: scroll;
+}
+
+.votesPercent{
+    border: 2px solid;
+    /* max-width: 100%; */
+    /* width: 100%; */
+    text-align: center;
+}

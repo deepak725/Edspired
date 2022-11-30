@@ -4,6 +4,7 @@ import { InstructorContext } from '../../../../../Helper/Context'
 
 
 import { useSearchParams } from "react-router-dom";
+// import jwt_decode from 'jwt-decode'
 import './Poll.css'
 import Polls from './Polls';
 const Poll = () => {
@@ -47,6 +48,8 @@ const handleChange = (e, i) => {
 const [success,setSuccess] = useState(false);
 const [params] = useSearchParams();
 const[loading,setLoading] = useState(false)
+const token = localStorage.getItem('token')
+// const user= jwt_decode(token) 
 const handleSubmit = async(e) => {
    e.preventDefault()
    console.log(question)
@@ -54,7 +57,6 @@ const handleSubmit = async(e) => {
    setLoading(true)
 
    let course_id = params.get("id");
-   const token = localStorage.getItem('token')
         
    const requestOptions = {
     method: "POST",
@@ -158,7 +160,9 @@ useEffect(()=>{
               {pollData.length > 0 ? <>
                 
                     {
+
                         pollData.map((obj)=>{
+                              
                               return <Polls obj={obj} />  
                         })
                     }

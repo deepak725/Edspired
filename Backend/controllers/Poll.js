@@ -116,7 +116,7 @@ const PollGet = async(req,res)=>{
             if(!cdata)
                 return responses.notFoundResponse(res,"Course Not found.")
 
-            const data =await poll.find({course_id : req.body.course_id});
+            const data =await poll.find({course_id : req.body.course_id}).sort({createdAt:-1});
             if(!data)
                 return responses.successResponse(res,"No data found!")
             
@@ -128,4 +128,44 @@ const PollGet = async(req,res)=>{
             return responses.badRequestResponse(res,err,"Internal Error!")
         }
 }
-module.exports = {PollController,PollVoteController , PollGet}
+
+const PollResult = async(req,res)=>{
+    try{
+
+        if(!req.body.instructor_id || !req.params.pollid)
+        {
+                return  responses.badRequestResponse(res,{},"Instructor Id or poll Id not provided!")
+        }
+
+        let pData = await poll.findById(req.params.pollid).populate("course_id")
+        if(!pData)
+            return responses.badRequestResponse(res,{},"Poll not found please check the poll ID")
+       
+        console.log(req.body.instructor_id.toString())
+        console.log(pData.course_id.instructor_id.toString() )
+   
+        if(req.body.instructor_id.toString() !== pData.course_id.instructor_id.toString()  )
+            return responses.badRequestResponse(res,{},"Only instructor can view the result!");
+
+        // console.log(pData);
+
+        let totalCount = pData.voted.length;
+        console.log(totalCount)
+        var result = []
+        pData.options.map((option)=>{
+                let temp = option.votes
+                console.log(temp)
+                let calc = (temp*100) / totalCount
+                console.log(calc)
+                result.push({"votesPercent":calc , "title":option.option});
+        })    
+
+         return responses.successfullyCreatedResponse(res,result,"poll result!")
+
+    }catch(err)
+    {
+        console.log(err)
+        return responses.badRequestResponse(res,err,"Internal Error");
+    }
+}
+module.exports = {PollController,PollVoteController , PollGet , PollResult}

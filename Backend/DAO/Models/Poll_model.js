@@ -17,6 +17,7 @@ const pollSchema = new mongoose.Schema({
     course_id:{
         type:String,
         required:true,
+        ref:'course'
     },
     options:[OptionSchema],
     voted: [{

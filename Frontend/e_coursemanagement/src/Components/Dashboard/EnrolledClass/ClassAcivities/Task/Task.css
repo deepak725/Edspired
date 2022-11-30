@@ -1,0 +1,163 @@
+.TaskContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.TaskContainer .container .modal{
+    max-width: 50%;
+    max-height: 70%;
+}
+
+.TaskContainer .container .modal .modal-child{
+    border: 2px solid;
+}
+
+.TaskContainer .container .modal .modal-child form{
+    /* border: 2px solid; */
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.TaskContainer .container .modal .modal-child form input,textarea{
+    /* border: 2px solid; */
+    max-width: 80%;
+   
+
+}
+.TaskContainer .container .modal .modal-child form .submit-task-form{
+background-color: #FF7F50; /* Green */
+border: none;
+color: white;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+border-radius: 5px;
+max-width: 40%;
+/* max-width: 100%;    */
+max-height: 10%;
+margin-bottom: 2%;
+cursor: pointer;
+}
+
+.TaskContainer .container .modal .modal-child form .submit-task-form2{
+    background-color: #493e3adc; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    max-width: 40%;
+    /* max-width: 100%;    */
+    max-height: 10%;
+    margin-bottom: 2%;
+    cursor: pointer;
+    }
+.flexform{
+    display: flex;
+    flex-direction: row;
+    /* border: 2px solid red; */
+    max-height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+}
+.flexform select{
+    max-width: 50%;
+    max-height: 40%;
+    
+}
+.flexform-date{
+    max-width: 50%;
+    max-height: 40%;
+}
+
+.flexform2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid; */
+    max-width: 50%;
+}
+
+.flexform3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.titleInput{
+    border: none;
+    border-bottom: 1px solid #000;
+     /* max-height: 20%; */
+     font-family: Inria Serif;
+     font-size: 20px;
+     font-weight: 700;
+     letter-spacing: 0em;
+     text-align: left;
+}
+.descInput{
+    border: none;
+    border-bottom: 1px solid #000;
+     /* max-height: 20%; */
+     font-family: Inria Serif;
+     font-size: 20px;
+     font-weight: 700;
+     letter-spacing: 0em;
+     text-align: left;
+     /* color: #FF7F50; */
+}
+
+.flexform2 label{
+    max-width: fit-content;
+    font-family: Inria Serif;
+font-size: 24px;
+font-weight: 700;
+letter-spacing: 0em;
+text-align: left;
+
+
+}
+.flexform3 label{
+    max-width: fit-content;
+    font-family: Inria Serif;
+font-size: 24px;
+font-weight: 700;
+letter-spacing: 0em;
+text-align: left;
+}
+.flexform2 select{
+    max-width: 30%;
+    border: 2px solid;
+    max-height: fit-content;
+}
+
+.flexform4{
+    /* border: 2px solid; */
+    margin: 2%;
+    max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.flexform4 label{
+    max-width: fit-content;
+    font-family: Inria Serif;
+font-size: 24px;
+font-weight: 700;
+letter-spacing: 0em;
+text-align: left;
+}
+

@@ -10,17 +10,16 @@ import student from "../../../../Images/student.png";
 import Poll from "../ClassAcivities/Poll/Poll";
 import Task from "../ClassAcivities/Task/Task";
 import { useEffect } from "react";
-
-const Comp1 = () => {
+// const Comp1 = () => {
 
        
-     return (
-       <div className="first">
-         {/* <h1>{isInstructor ? "YEs":"No"}</h1> */}
-                Hello
-       </div>
-     );
-   };
+//      return (
+//        <div className="first">
+//          {/* <h1>{isInstructor ? "YEs":"No"}</h1> */}
+//                 Hello
+//        </div>
+//      );
+//    };
 
 
    
@@ -29,7 +28,7 @@ const Comp1 = () => {
 const EnrolledClassBody = () => {
   
         const Components = {
-                1: ()=>Comp1,
+                1: ()=>Task,
                 2: ()=>Poll ,
               };
   
