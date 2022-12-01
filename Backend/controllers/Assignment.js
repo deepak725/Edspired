@@ -201,4 +201,29 @@ const getSingleAssignment = async(req,res)=>{
       }
 }
 
-module.exports = { assignment_controller, assignment_submission_controller ,getAllAssignment , getSingleAssignment };
+const getAssigDetails = async(req,res)=>{
+
+      try{
+
+        if(!req.body.student_id)
+        {
+          return responses.badRequestResponse(res,{},"Student Id not provided!");
+        }
+
+        const data = await assignment_submission.find({assignment_id:req.params.id}).populate("student_id")
+        if(!data)
+        {
+          return responses.notFoundResponse(res,"No assignment found!")
+        }
+
+        return responses.successfullyCreatedResponse(res,data,"Assignment Details!")
+
+
+      }catch(err)
+      {
+        console.log(err)
+        return responses.badRequestResponse(res,err,"Internal error")
+      }
+}
+
+module.exports = { assignment_controller, getAssigDetails,assignment_submission_controller ,getAllAssignment , getSingleAssignment };

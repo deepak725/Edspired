@@ -31,6 +31,7 @@ function App() {
         }
       }
   }
+  
 	},[passuser])
   
   
@@ -58,6 +59,7 @@ function App() {
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />    
                   <Route path='/Enrolledclass' element={<Home />}  /> 
+                  <Route path="/" element={<Home />} />  
                   </React.Fragment>
                   }          
     </Routes>

@@ -165,3 +165,88 @@ justify-content: center;
     border: 2px solid;
     padding: 5%;
 }
+
+
+.submitBtn4{
+    background-color: #365DC0; /* Green */
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    border-radius: 5px;
+    max-width: 20%;
+    font-weight: 700;
+    /* max-width: 100%;    */
+    margin-bottom: 2%;
+    max-height: 10%;
+    cursor: pointer;
+    border: 2px solid;
+    margin-top: 2%;
+    /* padding: 5%; */
+}
+
+.ViewResultContainer{
+    /* border: 2px solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* max-height: 100%; */
+}
+
+.resultContainer{
+    display: flex;
+    border: 2px solid ;
+    justify-content: center;
+    align-items: center;
+    max-width: 90%;
+    flex-direction: row;
+
+
+}
+
+.emailContainer{
+    font-family: Inria Serif;
+    font-size: 20px;
+    font-weight: 700;
+    border: 2px solid;
+    display: flex;
+    max-width: fit-content;
+    align-items: center;
+    max-height: fit-content;
+}
+
+.Attachments{
+    /* display: flex; */
+    /* flex-direction: column; */
+    font-family: Inria Serif;
+    font-size: 20px;
+    font-weight: 700;
+    border: 2px solid;
+    max-width: 70%;
+    /* display: flex; */
+    /* flex-direction: column; */
+    justify-content: center;
+    
+}
+
+.submit_status{
+    font-family: Inria Serif;
+    font-size: 28px;
+    font-weight: 700;
+    border: 2px solid;
+    
+    max-width: fit-content;
+}
+
+.edit{
+    /* font-family: Inria Serif; */
+    /* font-size: 28px; */
+    /* font-weight: 700; */
+    /* border: 2px solid; */
+    /* display: flex; */
+    
+    max-width: 20%;
+}

@@ -4,11 +4,11 @@ import './TaskPage.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 // import { InstructorContext } from '../../../../../../Helper/Context'
-import { MdTask } from "react-icons/md";
+import { MdTask,MdModeEditOutline } from "react-icons/md";
 import { useSearchParams } from "react-router-dom";
 import { useEffect,useRef } from 'react';
 import { useState } from 'react';
-// import jwt_Decode from 'jwt-decode'
+import jwt_Decode from 'jwt-decode'
 
 const TaskPage = () => {
 
@@ -24,7 +24,7 @@ const TaskPage = () => {
   const [files,setFiles] = useState('')
 
   let token = localStorage.getItem('token')
-//   var user = jwt_Decode(token)
+  var user = jwt_Decode(token)
 
   var isInstructor = false;
   const insval = params.get("prof");
@@ -69,12 +69,75 @@ const TaskPage = () => {
 
                 
           }
+
+        //   
+      
+
   }
   const [showModal, setShowModal] = useState(false);
-  const openModal = () => {
+  const [submitted,setSubmitted] = useState(false)
+  const [showResult, setShowResult] = useState(false)
+
+  const openModal =async() => {
     setShowModal(true);
-    // setSuccess(false)
+    setSuccess(false)
+    let assi_id = params.get("id")
+    let student_id = user.id
+    const requestOptions2 = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({student_id}),
+      };
+      const response2 = await fetch(
+        ` http://localhost:3001/assignment/Submission/${assi_id}`,
+        requestOptions2
+      );
+
+        const data = await response2.json()
+        console.log(data)
+        if(response2.status === 400 || response2.status === 404)
+         {
+            alert(data.message)
+         } else
+         {
+
+            var dt = data.data;
+            dt.map((obj)=>{
+                    if(String(obj.student_id._id) === String(user.id))
+                {
+                    setSubmitted(true)
+                }
+            })
+                
+         }  
 };
+
+const [resData,setResData] = useState([])
+
+const fetchReult = async()=>{
+
+    let assi_id = params.get("id")
+    let student_id = user.id
+    const requestOptions2 = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({student_id}),
+      };
+      const response2 = await fetch(
+        ` http://localhost:3001/assignment/Submission/${assi_id}`,
+        requestOptions2
+      );
+
+        const data = await response2.json()
+        console.log(data)
+        if(response2.status === 400 || response2.status === 404)
+         {
+            alert(data.message)
+         } else
+         {
+          setResData(data.data);
+         }  
+}
 
 
 const modalRef = useRef();
@@ -141,11 +204,36 @@ if (e.target === modalRef.current) {
                     <br></br>
 
                     <span className='DueDate'>Due-Date - { dueDate ? dueDate :"No due date"}</span>
+                   
+                   {isInstructor ? <button className='submitBtn4' onClick={()=>{
+                                    setShowResult(!showResult) 
+                                    fetchReult()
+                                }}>View Submissions</button> : null}
                     {isInstructor? 
                         <div className='ViewResultContainer'>
-                                hii
-                                <button className='submit-create-form'></button>
+                               
+                               
+                            {
+                                showResult ? <div className='resultContainer'>
 
+                                        {resData.map((obj)=>{
+                                            return <table>
+                                                <tr>
+                                            <td className='emailContainer'>{obj.student_id.email}</td>
+                                            <td  className='Attachments'>
+                                            {obj.attachments.map((link,i)=>{
+                                                return <a href={link} target={'_blank'} rel="noreferrer"> Attachment {i+1} </a>
+                                            })}
+                                            </td>
+                                            {/* <span>{new Date(obj.submission_Date)}</span> */}
+                                              <td  className='submit_status'>{obj.status === 1 ? "Submitted on time":"Submitted Late"}</td>
+                                              <td className='edit'><>Give marks</><MdModeEditOutline /></td>
+                                              </tr>
+                                              </table>
+                                        })}
+
+                                </div> : null
+                            }
                          </div> : <div className='StudentView'>
                                 <button className='submitBtn' onClick={openModal} >Submit Assignment</button>
                                 {showModal ? <div className="container" onClick={closeModal}>
@@ -154,7 +242,8 @@ if (e.target === modalRef.current) {
               
                <button onClick={() => setShowModal(false)}>X</button>
                <div className='modal-child'>
-                    
+
+                 {submitted ? <div className='success'> Assignment Already submitted! </div> : 
                     <form onSubmit={(e)=>{handleSubmit(e)}}>
                         <label>Attach your submmission here : </label>
                         <input type={"file"} onChange={(e)=>{
@@ -165,7 +254,7 @@ if (e.target === modalRef.current) {
                      {loading ? <input type={"submit"}  className={"submitBtn3"} value={"Submitting please wait.."} disabled />: <input type={"submit"}  className={"submitBtn2"} />}
                     {success ?<center><span className='success'>Assignment submitted Successfully!</span></center> :null} 
                     </form>
-                   
+}
                </div>
               
              </div>

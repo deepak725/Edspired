@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const {CoursevalidateToken,CourseJoinvalidateToken} = require('../Utils/JWT')
-const {assignment_controller,assignment_submission_controller,getAllAssignment ,getSingleAssignment} = require("../controllers/Assignment")
+const {assignment_controller,getAssigDetails,assignment_submission_controller,getAllAssignment ,getSingleAssignment} = require("../controllers/Assignment")
 // const upload = require('../Utils/')
 const upload = require('../Utils/multer')
 router.post('/upload',upload.array("pictures", 10),CoursevalidateToken,async(req,res)=>{
@@ -22,4 +22,8 @@ router.post('/getAll',async(req,res)=>{
 router.get('/get/:id',async(req,res)=>{
     getSingleAssignment(req,res);
 });
+
+router.post('/Submission/:id',async(req,res)=>{
+    getAssigDetails(req,res)
+})
 module.exports = router;
