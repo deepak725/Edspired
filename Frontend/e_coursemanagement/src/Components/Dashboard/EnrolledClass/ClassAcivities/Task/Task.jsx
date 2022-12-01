@@ -4,10 +4,13 @@ import './Task.css'
 import jwt_Decode from 'jwt-decode'
 import { useSearchParams } from "react-router-dom";
 import axios from 'axios';
+import { useEffect } from 'react';
+import EachTask from './EachTask';
 const Task = () => {
   const [showModal, setShowModal] = useState(false);
   const openModal = () => {
       setShowModal(true);
+      setSuccess(false)
   };
 
  const closeModal = (e) => {
@@ -26,6 +29,8 @@ const[success,setSuccess] = useState(false)
   const [files,setFiles] = useState('')
 
   const [params] = useSearchParams();
+  let token = localStorage.getItem('token')
+  var user = jwt_Decode(token)
   function handleSubmit(e)
   {
     e.preventDefault()
@@ -44,12 +49,12 @@ const[success,setSuccess] = useState(false)
         formData.append('pictures', files[key])
     }
 
-    let token = localStorage.getItem('token')
-    var user = jwt_Decode(token)
-   let course_id = params.get("id");
+  
+   var course_id = params.get("id");
 
     formData.append('assignment_name',assign_title)
     formData.append('assignment_dueDate',dueDate)
+    formData.append('assignment_description',ass_desc)
     formData.append('token',token)
     formData.append('course_id',course_id)
     formData.append('Points',points)
@@ -70,6 +75,42 @@ const[success,setSuccess] = useState(false)
     })
 
   }
+
+  const [funcData,setFuncData] = useState([])
+
+  async function getAssignments()
+  {
+      let course_id = params.get("id");
+
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ course_id }),
+      };
+      const response = await fetch(
+        `http://localhost:3001/assignment/getAll`,
+        requestOptions
+      );
+      
+      const data = await response.json()
+      console.log(data)
+      if(response.status === 400 || response.status === 500)
+      {
+        alert(data.message)
+      }else
+      {
+
+        setFuncData(data.data);
+       
+
+      }
+
+
+  }
+  useEffect(()=>{
+    getAssignments()
+    // eslint-disable-next-line
+  },[])
 
   return (
     <div className='TaskContainer'>
@@ -122,12 +163,19 @@ const[success,setSuccess] = useState(false)
                        </div>
                    {loading ? <input type={"submit"} value={"Creating please wait!"} className={"submit-task-form2"}  disabled/> : <input type={"submit"} className={"submit-task-form"} />}
                   </form>
-                    {success ? <span className='success'>Assignment created Successfully!</span>:null}
+                    {success ?<center><span className='success'>Assignment created Successfully!</span></center> :null}
                </div>
               
              </div>
              </div>
            :null}
+           <div className='TaskEach'>
+                    {funcData.length >0 ? <>{funcData.map((obj)=>{
+
+            return <EachTask obj={obj} />
+
+            })}</>  : " All Task will be shown here!"}
+           </div>
     </div>
   )
 }

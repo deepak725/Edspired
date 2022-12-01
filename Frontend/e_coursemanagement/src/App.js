@@ -7,6 +7,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import React,{useState,useEffect } from 'react';
 import jwt_decode from "jwt-decode";
 import EnrolledClass from './Components/Dashboard/EnrolledClass/EnrolledClass';
+import TaskPage from './Components/Dashboard/EnrolledClass/ClassAcivities/Task/AssignmentPage/TaskPage';
 function App() {
   
   
@@ -48,6 +49,8 @@ function App() {
                   <Route path="/" element={<Dashboard />} />  
                   
                   <Route path='/Enrolledclass' element={<EnrolledClass />}  />
+                  
+                  <Route path='/Task' element={<TaskPage />}  />
                   </React.Fragment>
                   :
                 <React.Fragment>

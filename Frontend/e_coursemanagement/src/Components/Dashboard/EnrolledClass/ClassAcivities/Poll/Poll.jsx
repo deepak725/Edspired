@@ -167,7 +167,7 @@ useEffect(()=>{
                         })
                     }
 
-              </> : "No polls found!"}
+              </> : "All the polls will be shown here!"}
             </div>
     </div>
     )

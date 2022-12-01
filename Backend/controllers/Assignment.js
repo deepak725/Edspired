@@ -91,8 +91,7 @@ const assignment_submission_controller = async (req, res) => {
   try {
     if (
       !req.body.assignment_id ||
-      !req.body.student_id ||
-      !req.body.submission_Date
+      !req.body.student_id 
     ) {
       return responses.notFoundResponse(
         res,
@@ -121,14 +120,23 @@ const assignment_submission_controller = async (req, res) => {
       });
       console.log("Assignment files uploaded successfully!");
     }
-    let dte = new Date(req.body.submission_Date);
-
+    let today_dte = new Date().getTime();
+    let due_Dte = new Date(assign_data.assignment_dueDate).getTime()
+    var status = 0;
+    if(today_dte <= due_Dte)
+    {
+      status = 1;
+    }
+    else
+    {
+      status = 2;
+    }
     const submission_ = new assignment_submission({
       assignment_id:req.body.assignment_id,
       student_id:req.body.student_id,
-      attachments:req.body.attachments,
-      submission_Date:req.body.submission_Date
-
+      attachments:url,
+      submission_Date:today_dte,
+      status:status
     })
 
     submission_.save().then((obj)=>{
@@ -145,4 +153,52 @@ const assignment_submission_controller = async (req, res) => {
   }
 };
 
-module.exports = { assignment_controller, assignment_submission_controller };
+const getAllAssignment = async(req,res)=>{
+  try{
+
+    if(!req.body.course_id)
+    {
+        return responses.badRequestResponse(res,{},"Please provide course id!");
+    }
+
+    const Data = await assignment.find({course_id:req.body.course_id}).sort({createdAt:-1});
+
+    if(!Data)
+    {
+        return responses.serverErrorResponse(res,"Course not found with this course id")
+    }
+
+    return responses.successfullyCreatedResponse(res,Data,"Assignment results!")
+
+
+
+  }catch(err)
+  {
+    return responses.badRequestResponse(res,err,"Internal error!")
+  }
+}
+
+const getSingleAssignment = async(req,res)=>{
+
+      try{
+            if(!req.params.id)
+            {
+              return responses.notFoundResponse(res,"Id not provided!")
+            }
+            
+            const data = await assignment.findById(req.params.id)
+            if(!data)
+            {
+              return responses.notFoundResponse(res,"Assignment not found!")
+            }
+
+            return responses.successfullyCreatedResponse(res,data,"Assignment details!")
+
+      }catch(err)
+      {
+        console.log(err)
+        return responses.badRequestResponse(res,err,"Internal error")
+      }
+}
+
+module.exports = { assignment_controller, assignment_submission_controller ,getAllAssignment , getSingleAssignment };

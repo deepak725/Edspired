@@ -1,0 +1,167 @@
+.TaskPageBody{
+
+    /* border: 2px solid; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.TaskIcon2{
+    max-width: 10%;
+    /* border: 2px solid red; */
+    max-height: 10%;
+    margin-top: 2%;
+}
+
+.AsignmentTitle{
+    max-width: fit-content;
+    /* border: 2px solid; */
+    max-height: 2%;
+    padding: 2%;
+    font-family: Inria Serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #FF7F50;
+    /* line-height: 66px; */
+    /* letter-spacing: 0em; */
+/* text-align: left; */
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.AssignmentDesc{
+    /* border: 2px solid black; */
+    max-height: 35%;
+    font-family: Inria Serif;
+font-size: 20px;
+font-weight: 700;
+/* line-height: 34px; */
+letter-spacing: 0em;
+text-align: justify;
+max-width: 60%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.Desc{
+    max-width: fit-content;
+    font-family: Inria Serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FF7F50;
+    max-height: 8%;
+    /* border: 2px solid; */
+}
+
+.DueDate{
+    /* border: 2px solid ; */
+    max-height: 2%;
+    max-width: fit-content;
+    font-family: Inria Serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FF7F50;
+}
+
+.StudentView{
+    /* border: 2px solid; */
+    margin-top: 4%;
+    max-width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.submitBtn{
+    background-color: #FF7F50; /* Green */
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 5px;
+    max-width: 40%;
+    font-weight: 700;
+    /* max-width: 100%;    */
+    max-height: 40%;
+    margin-bottom: 2%;
+    cursor: pointer;
+}
+
+
+.TaskPageBody .container .modal .modal-child form {
+    /* border: 2px solid; */
+    max-width: 80%;
+    max-height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.TaskPageBody .container .modal .modal-child form label{
+    /* border: 2px solid; */
+    max-width: fit-content;
+    max-height: 20%;
+    margin-top: 5%;
+    font-family: Inria Serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FF7F50;
+
+}
+
+
+.TaskPageBody .container .modal .modal-child form input{
+    /* border: 2px solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: fit-content;
+    margin: 2%;
+    max-height: max-content;
+    
+}
+
+
+.submitBtn2{
+    background-color: #FF7F50; /* Green */
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    border-radius: 5px;
+    max-width: 100%;
+    font-weight: 700;
+    /* max-width: 100%;    */
+    max-height: 40%;
+    margin-bottom: 2%;
+    cursor: pointer;
+    border: 2px solid;
+    padding: 5%;
+}
+
+
+.submitBtn3{
+    background-color: #574e4bc5; /* Green */
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    border-radius: 5px;
+    max-width: 100%;
+    font-weight: 700;
+    /* max-width: 100%;    */
+    max-height: 40%;
+    margin-bottom: 2%;
+    cursor: pointer;
+    border: 2px solid;
+    padding: 5%;
+}

@@ -14,9 +14,16 @@ const Assignment_submit = new mongoose.Schema({
     },
     attachments:[{type: mongoose.SchemaTypes.Url}],
     submission_Date:{
-        type:Date,
+        type:String,
         required:true
     },
+    EarnedPoints:{type:Number},
+    status:{
+        type:Number,
+        default:0,
+        required:true
+
+    }
 
 },{
     timestamps: true,
