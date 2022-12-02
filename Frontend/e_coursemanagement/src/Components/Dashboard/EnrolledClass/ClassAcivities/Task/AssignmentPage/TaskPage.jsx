@@ -4,11 +4,12 @@ import './TaskPage.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 // import { InstructorContext } from '../../../../../../Helper/Context'
-import { MdTask,MdModeEditOutline } from "react-icons/md";
+import { MdTask } from "react-icons/md";
 import { useSearchParams } from "react-router-dom";
 import { useEffect,useRef } from 'react';
 import { useState } from 'react';
 import jwt_Decode from 'jwt-decode'
+import TaskResult from './TaskResult';
 
 const TaskPage = () => {
 
@@ -102,8 +103,9 @@ const TaskPage = () => {
          {
 
             var dt = data.data;
+// eslint-disable-next-line
             dt.map((obj)=>{
-                    if(String(obj.student_id._id) === String(user.id))
+                if(String(obj.student_id._id) === String(user.id))
                 {
                     setSubmitted(true)
                 }
@@ -217,19 +219,7 @@ if (e.target === modalRef.current) {
                                 showResult ? <div className='resultContainer'>
 
                                         {resData.map((obj)=>{
-                                            return <table>
-                                                <tr>
-                                            <td className='emailContainer'>{obj.student_id.email}</td>
-                                            <td  className='Attachments'>
-                                            {obj.attachments.map((link,i)=>{
-                                                return <a href={link} target={'_blank'} rel="noreferrer"> Attachment {i+1} </a>
-                                            })}
-                                            </td>
-                                            {/* <span>{new Date(obj.submission_Date)}</span> */}
-                                              <td  className='submit_status'>{obj.status === 1 ? "Submitted on time":"Submitted Late"}</td>
-                                              <td className='edit'><>Give marks</><MdModeEditOutline /></td>
-                                              </tr>
-                                              </table>
+                                            return <TaskResult obj={obj} points={adata && adata.points ? adata.points : "Will be updated soon" } />
                                         })}
 
                                 </div> : null

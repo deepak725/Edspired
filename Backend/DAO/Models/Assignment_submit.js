@@ -17,7 +17,7 @@ const Assignment_submit = new mongoose.Schema({
         type:String,
         required:true
     },
-    EarnedPoints:{type:Number},
+    EarnedPoints:{type:Number,default:-1},
     status:{
         type:Number,
         default:0,

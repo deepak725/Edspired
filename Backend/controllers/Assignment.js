@@ -226,4 +226,40 @@ const getAssigDetails = async(req,res)=>{
       }
 }
 
-module.exports = { assignment_controller, getAssigDetails,assignment_submission_controller ,getAllAssignment , getSingleAssignment };
+const PutAsignGrade = async(req,res)=>{
+    try{
+        if(!req.params.id  || !req.body.points)
+        {
+          return responses.notFoundResponse(res,"Student id or assignment id not found!")
+        }
+        
+        const data = await assignment_submission.findById({_id:req.params.id})
+        if(!data)
+        {
+          return responses.badRequestResponse(res,{},"No assignment submission found in this id!")
+        }
+        // console.log(data)
+        console.log(req.body.points)
+       const result = await assignment_submission.findByIdAndUpdate(
+        {_id:req.params.id },
+          {EarnedPoints:req.body.points}
+        )
+
+        console.log(result)
+      if(!result)
+       {
+        return responses.serverErrorResponse(res,"Error in updating")
+       } 
+
+      //  console.log(result)
+       return responses.successfullyCreatedResponse(res,{},"Assignment updated")
+
+
+      }catch(err)
+    {
+      console.log(err)
+      return responses.badRequestResponse(res,{},"Internal error")
+    }
+}
+
+module.exports = { assignment_controller, getAssigDetails,PutAsignGrade,assignment_submission_controller ,getAllAssignment , getSingleAssignment };
