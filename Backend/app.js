@@ -9,6 +9,8 @@ const userRoute = require('./routes/userRoute')
 const courseRoute = require('./routes/courseRoute')
 const assiRoute = require('./routes/assignmentRoute')
 const pollRoute = require('./routes/pollRoute')
+const materialRoute = require('./routes/MaterialRoute')
+
 var corsOptions = {
     origin:'*', 
     credentials:true,            //access-control-allow-credentials:true
@@ -25,6 +27,7 @@ app.use('/user',userRoute);
 app.use('/course',courseRoute);
 app.use('/assignment',assiRoute);
 app.use('/poll',pollRoute);
+app.use('/material',materialRoute);
 
 app.get("/",(req,res)=>{
     res.send("Welcome to Edspired Backend!");

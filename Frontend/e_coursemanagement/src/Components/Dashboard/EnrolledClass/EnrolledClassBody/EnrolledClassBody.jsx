@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./EnrolledClassBody.css";
 import tasks from "../../../../Images/tasks.png";
-import quiz from "../../../../Images/quiz.png";
+// import quiz from "../../../../Images/quiz.png";
 import info from "../../../../Images/info.png";
 import poll from "../../../../Images/poll.png";
 import material from "../../../../Images/material.png";
@@ -9,6 +9,7 @@ import announcement from "../../../../Images/announcement.png";
 import student from "../../../../Images/student.png";
 import Poll from "../ClassAcivities/Poll/Poll";
 import Task from "../ClassAcivities/Task/Task";
+import Material from "../ClassAcivities/Material/Material";
 import { useEffect } from "react";
 // const Comp1 = () => {
 
@@ -30,6 +31,7 @@ const EnrolledClassBody = () => {
         const Components = {
                 1: ()=>Task,
                 2: ()=>Poll ,
+                3: ()=>Material
               };
   
               const [Comp, setComp] = useState(Components[1]);
@@ -66,12 +68,12 @@ const EnrolledClassBody = () => {
           </div>
           <div className="subclassmenu-text">Poll</div>
         </div>
-        <div className="subclassmenu">
+        {/* <div className="subclassmenu">
           <div className="subclassmenu-icon">
             <input type={"image"} alt={"image"} src={quiz} />
           </div>
           <div className="subclassmenu-text">Quiz</div>
-        </div>
+        </div> */}
         <div className="subclassmenu">
           <div className="subclassmenu-icon">
             <input type={"image"} alt={"image"} src={announcement} />
@@ -84,7 +86,10 @@ const EnrolledClassBody = () => {
           </div>
           <div className="subclassmenu-text">Students</div>
         </div>
-        <div className="subclassmenu">
+        <div className="subclassmenu"   onClick={(e) => {
+            e.preventDefault();
+            setComp(Components[3]);
+          }}>
           <div className="subclassmenu-icon">
             <input type={"image"} alt={"image"} src={material} />
           </div>

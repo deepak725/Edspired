@@ -8,6 +8,7 @@ import React,{useState,useEffect } from 'react';
 import jwt_decode from "jwt-decode";
 import EnrolledClass from './Components/Dashboard/EnrolledClass/EnrolledClass';
 import TaskPage from './Components/Dashboard/EnrolledClass/ClassAcivities/Task/AssignmentPage/TaskPage';
+import MaterialPage from './Components/Dashboard/EnrolledClass/ClassAcivities/Material/MaterialPage/MaterialPage';
 function App() {
   
   
@@ -52,6 +53,8 @@ function App() {
                   <Route path='/Enrolledclass' element={<EnrolledClass />}  />
                   
                   <Route path='/Task' element={<TaskPage />}  />
+                  <Route path='/material' element={<MaterialPage />}  />
+
                   </React.Fragment>
                   :
                 <React.Fragment>
