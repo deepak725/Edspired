@@ -54,7 +54,7 @@ setLoading(true)
 
 }
   return (
-   <div>
+   <div className='tableContainer'>
     {/* hello */}
      <table>
         <tbody >

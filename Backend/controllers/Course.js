@@ -78,15 +78,18 @@ const joinCourse = async(req,res) => {
         {
           console.log("inside if")
             var ids2 = stu.student_id;
-            var error =  ids2.every(ele => {
-               if(ele.toString() === ids.toString())
-                {
-                    console.log("in every")
-                    return true;
-                }
-          })
+            var error =  false;
+
+            ids2.map((ele)=>{
+              if(ele.toString() === ids.toString())
+              {
+                  console.log("in every")
+                  error = true;
+              }
+            })
         
           console.log("ended")
+          console.log(error)
             if(error){
                 return responses.badRequestResponse(res,{},"You might have joined already");
             }
@@ -211,5 +214,34 @@ const getSingleCourse = async(req,res)=>{
 
 }
 
+const getCourseStudents = async(req,res)=>{
 
-module.exports = {createCourse,joinCourse,getStudentCourse,getInstructorCourse ,getSingleCourse};
+    try{
+        if(!req.params.id)
+        {
+          return responses.notFoundResponse(res,"Course Id not provided!") 
+        }
+
+        const course_d = await course.findById(req.params.id);
+        if(!course_d)
+          return responses.badRequestResponse(res,{},"Course not found from this id")
+
+          console.log(course_d)
+
+        const data = await course_register.find({course_id:req.params.id}).populate('student_id')
+        // console.log(data)
+        if(!data)
+          return responses.badRequestResponse(res,{},"No student found in the course")
+        
+        return responses.successfullyCreatedResponse(res,data,"Student Details")
+
+      }
+      catch(err)
+    {
+      console.log(err)
+      return responses.badRequestResponse(res,err,"Internal error!")
+    }
+}
+
+
+module.exports = {createCourse,joinCourse,getStudentCourse,getInstructorCourse ,getSingleCourse ,getCourseStudents};

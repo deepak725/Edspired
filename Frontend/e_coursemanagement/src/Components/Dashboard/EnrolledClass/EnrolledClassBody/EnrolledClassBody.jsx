@@ -10,7 +10,9 @@ import student from "../../../../Images/student.png";
 import Poll from "../ClassAcivities/Poll/Poll";
 import Task from "../ClassAcivities/Task/Task";
 import Material from "../ClassAcivities/Material/Material";
+import Announcement from "../ClassAcivities/Announcement/Announcement";
 import { useEffect } from "react";
+import Students from "../ClassAcivities/Students/Students";
 // const Comp1 = () => {
 
        
@@ -31,7 +33,9 @@ const EnrolledClassBody = () => {
         const Components = {
                 1: ()=>Task,
                 2: ()=>Poll ,
-                3: ()=>Material
+                3: ()=>Announcement,
+                4: ()=>Material,
+                5: ()=>Students
               };
   
               const [Comp, setComp] = useState(Components[1]);
@@ -74,13 +78,19 @@ const EnrolledClassBody = () => {
           </div>
           <div className="subclassmenu-text">Quiz</div>
         </div> */}
-        <div className="subclassmenu">
+        <div className="subclassmenu" onClick={(e) => {
+            e.preventDefault();
+            setComp(Components[3]);
+          }}>
           <div className="subclassmenu-icon">
             <input type={"image"} alt={"image"} src={announcement} />
           </div>
           <div className="subclassmenu-text">Announcements</div>
         </div>
-        <div className="subclassmenu">
+        <div className="subclassmenu" onClick={(e) => {
+            e.preventDefault();
+            setComp(Components[5]);
+          }}>
           <div className="subclassmenu-icon">
             <input type={"image"} alt={"image"} src={student} />
           </div>
@@ -88,7 +98,7 @@ const EnrolledClassBody = () => {
         </div>
         <div className="subclassmenu"   onClick={(e) => {
             e.preventDefault();
-            setComp(Components[3]);
+            setComp(Components[4]);
           }}>
           <div className="subclassmenu-icon">
             <input type={"image"} alt={"image"} src={material} />

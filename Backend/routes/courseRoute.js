@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {CoursevalidateToken,CourseJoinvalidateToken,validateToken} = require('../Utils/JWT')
-const {createCourse,joinCourse,getStudentCourse,getInstructorCourse,getSingleCourse} = require('../controllers/Course');
+const {createCourse,joinCourse,getStudentCourse,getInstructorCourse,getSingleCourse,getCourseStudents} = require('../controllers/Course');
 
 router.post("/create",CoursevalidateToken,async(req,res)=>{
 
@@ -27,6 +27,9 @@ router.post("/getCourse",async(req,res)=>{
     getSingleCourse(req,res)
 })
 
+router.get("/getStudents/:id",async(req,res)=>{
+    getCourseStudents(req,res)
+})
 // router.post("")
 
 

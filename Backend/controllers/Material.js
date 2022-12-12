@@ -77,9 +77,10 @@ const UploadFile = async(req,res)=>{
       let imageResponses = await Promise.all(multiplePicturePromise);
       imageResponses.map((obj) => {
         urls = obj.secure_url;
-      });
+        console.log(obj)
+    });
       console.log("mateiral uploaded successfully!");
-      console.log(urls)
+      console.log(imageResponses)
     
       const attachment = new AttachmentSchema({
         name:req.body.m_name,

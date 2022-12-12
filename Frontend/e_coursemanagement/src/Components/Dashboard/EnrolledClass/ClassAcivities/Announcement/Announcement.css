@@ -1,0 +1,120 @@
+.AnnouncementClass{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.CreateAnnouncement{
+    max-width: 25%;
+    max-height: 10%;    
+    background:#FF7F50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Inria Serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: center;
+    border-radius: 50px;
+    margin: 2%;
+    cursor: pointer;
+    padding: 1%;
+}
+
+.AllAnnouncement{
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    /* max-width: 60%; */
+    max-height: 80%;
+    border-top: 1px solid #000;
+}
+.AnnouncementContainer{
+    max-width: 90%;
+    max-height: 200%;
+    border: 2px solid ;
+    border-radius: 20px;
+    /* background: #FF7F50; */
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.CreatorDetail{
+    /* border: 2px solid; */
+    max-width: 40%;
+    display: flex;
+    justify-content: space-between;
+    color: #365DC0;
+    /* align-items: center; */
+    /* margin: 1%; */
+}
+
+.CreatorName{
+    /* border: 2px solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Inria Serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-left: 3%;
+  
+}
+.timestamp{
+    font-family: Inria Serif;
+    font-size: 15px;
+    font-weight: 700;
+}
+.usericon{
+    max-width: 5%;
+    margin-right: 1%;
+}
+
+.Announcement{
+    font-family: Inria Serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: justify;
+    margin-top: 1%;
+}
+
+.commentsec{
+    margin-top: 4%;
+    border-top: 1px solid #000;
+    color: rgba(0, 0, 0, 0.616);
+}
+
+.commentsec :hover{
+    color: black;
+    text-decoration: underline;
+}
+
+.Attachment{
+    margin-top: 2%;
+}
+
+.AnnouncementClass .container .modal .modal-child form{
+    border: 2px solid;
+    max-width: 80%;
+    max-height: 80%;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.AnnouncementClass .container .modal .modal-child form input{
+    /* border: 2px solid; */
+    max-width: 70%;
+    max-height: 20%;
+    margin-top: 2%;
+}
