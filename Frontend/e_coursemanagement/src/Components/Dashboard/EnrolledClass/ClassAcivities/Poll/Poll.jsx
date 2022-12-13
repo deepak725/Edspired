@@ -167,7 +167,7 @@ useEffect(()=>{
                         })
                     }
 
-              </> : "All the polls will be shown here!"}
+              </> : "All the polls will be shown"}
             </div>
     </div>
     )

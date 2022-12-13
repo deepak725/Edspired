@@ -105,7 +105,7 @@ const verifyEmail = async(req,res)=>{
       const url = `${process.env.BASE_URL}user/${user.id}/verify/${token1.token}`;
       await sendEmail(user.email, "Verify Email", url,res);
   
-    //  return responses.successResponse(res,{},"An Email sent to your account please verify")
+    //  return responses.successResponse(res,{},"An Email has been sent to your email account please verify")
     }else{
       const token = await new Token({
         userId: user._id,
@@ -115,7 +115,7 @@ const verifyEmail = async(req,res)=>{
       const url = `${process.env.BASE_URL}user/${user.id}/verify/${token.token}`;
       await sendEmail(user.email, "Verify Email", url,res);
   
-      // return responses.successResponse(res,{},"An Email sent to your account please verify")
+      // return responses.successResponse(res,{},"An Email has been sent to your email account please verify")
   
     }
       }catch(err)

@@ -4,11 +4,12 @@ import './DashBoardHead.css'
 import logo from '../../../Images/Demo.png'
 import enroll from '../../../Images/enroll.png'
 import Add from '../../../Images/Add.png'
-import Profile from '../../../Images/user.png'
+import ProfileIcon from '../../../Images/user.png'
 import CreateClass from './CreateClass'
 import JoinClass from './JoinClass'
-
+import Profile from './Profile'
 const DashBoardHead = () => {
+
   const [showModal, setShowModal] = useState(false);
   const openModal = () => {
     setShowModal(true);
@@ -19,6 +20,11 @@ const DashBoardHead = () => {
     setJoinShowModal(true);
   };
 
+  
+  const [ProfileshowModal, setProfileShowModal] = useState(false);
+  const ProfileopenModal = () => {
+    setProfileShowModal(true);
+  };
   return (
     <div className='DashBoardHead'>
         <div className='DashBoardLogo'>
@@ -38,9 +44,9 @@ const DashBoardHead = () => {
                     </div>
                     <div className='subclass-Text'>Course</div>
             </div>
-            <div className='subclass'>
+            <div className='subclass' onClick={ProfileopenModal}>
             <div className='subclass-logo'>
-                    <input type={"image"} src={Profile} alt={"logo"}/>
+                    <input type={"image"} src={ProfileIcon} alt={"logo"}/>
    
                     </div>
                     <div className='subclass-Text'>Profile</div>
@@ -49,6 +55,7 @@ const DashBoardHead = () => {
         
         {JoinshowModal ? <JoinClass setJoinShowModal={setJoinShowModal} /> : null}
         {showModal ? <CreateClass setShowModal={setShowModal} /> : null}
+        {ProfileshowModal ? <Profile setProfileShowModal={setProfileShowModal} /> : null}
     </div>
   )
 }

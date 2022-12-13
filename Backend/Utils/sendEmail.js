@@ -20,10 +20,10 @@ module.exports = async (email, subject, text,res) => {
 			text: text,
 		});
 		console.log("email sent successfully");
-        return responses.successResponse(res,"Email sent successfully");
+        return responses.successResponse(res,{},"An Email has been sent to your email account please verify the link given in mail.");
 	} catch (error) {
 		console.log("email not sent!");
 		console.log(error);
-		return responses.badRequestResponse(res,error,"Email not sent!");
+		return responses.badRequestResponse(res,error,"Internal error");
 	}
 };

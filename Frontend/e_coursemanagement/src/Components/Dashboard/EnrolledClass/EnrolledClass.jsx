@@ -43,7 +43,7 @@ const EnrolledClass = () => {
             }
             if(user) 
             {
-                if(String(data.data.instructor_id) === String(user.id))
+                if(String(data.data.instructor_id._id) === String(user.id))
                 {
                     console.log("Instructor");
                     setInstructor(true)

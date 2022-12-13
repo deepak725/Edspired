@@ -1,7 +1,7 @@
 const responses = require("../Utils/responses");
 const course = require("../DAO/Models/course_model");
 const course_register = require("../DAO/Models/course_register");
-// const users = require("../DAO/Models/user_model");
+const users = require("../DAO/Models/user_model");
 const mongoose = require('mongoose');
 const {idExist} = require('../DAO/Access/User')
 const {course_create} = require('../DAO/Access/Course_crud');
@@ -69,6 +69,14 @@ const joinCourse = async(req,res) => {
         //db code
         var stu = await course_register.findOne({course_id:course_id })
         var ids = req.body.student_id;
+        const stu_data = await users.findById(ids)
+        
+        if(!stu_data)
+          return responses.badRequestResponse(res,{},"No user found with this ID")
+
+        if(!stu_data.verified)
+          return responses.badRequestResponse(res,{},"Your email id is not verified. please verify it in profile section!")
+
         console.log(stu)
         if(inst_id.toString() === ids.toString())
         {
@@ -199,7 +207,7 @@ const getSingleCourse = async(req,res)=>{
       }
       
       let id = new mongoose.Types.ObjectId(req.body.id);
-      let course_data = await course.findOne({_id:req.body.id});
+      let course_data = await course.findOne({_id:req.body.id}).populate('instructor_id');
       if(!course_data)
         return responses.badRequestResponse(res,{},"Class Not found!");
       

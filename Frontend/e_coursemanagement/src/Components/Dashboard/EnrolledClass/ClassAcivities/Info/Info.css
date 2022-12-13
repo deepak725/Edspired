@@ -1,0 +1,54 @@
+.InfoContainer{
+    /* border: 2px solid; */
+    max-width: 80%;
+    max-height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.TitleContainer{
+    /* border: 2px solid; */
+    max-width: 80%;
+    max-height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FF7F50;
+}
+.InfoIcon{
+    max-width: 8%;
+}
+.CourseTitle{
+    /* border: 2px solid; */
+    max-width: fit-content;
+    max-height: 25%;
+    font-family: Inria Serif;
+    font-size: 25px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.OtherContainer{
+    /* border: 2px solid; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 80%;
+    max-height: 40%;
+}
+.CoureCode{
+    /* border: 2px solid; */
+    max-width: fit-content;
+    max-height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #365DC0;
+    font-family: Inria Serif;
+    font-size: 20px;
+    font-weight: 700;
+}
